@@ -7,7 +7,7 @@
 
 Ai can be define by Four dimension where it's define by reasoning x behavior (comportamento).
 
-### Thinking Humanly
+### Acting Humanly 
   - Some form to test this dimension is by Turing Test, 
   it was designed to provide a satisfactory 
   operatiuonal definition of intelligence.
@@ -28,8 +28,50 @@ Ai can be define by Four dimension where it's define by reasoning x behavior (co
   - These six disciplines compose most of AI is possible because 
   the Turing Test that remains relevant 60 years later.
 
+### Thinking Humanly
+  - These try to aproximate the human to machine by rationally, 
+  and it's possible by three ways: through introspection, 
+  thought psychological experiments and through brain imaging.
+  - The Cognitive Science is very important for this AI area
+  and it show the differences and similarities between AI
+  techniquess and human cognition.
+
 ### Thinking Rationally 
+  - The "laws of thought" approach
+  - The idea is use the **Logic** for made correctly thoughts
+  - Logicist tradition within AI hopes to build on such 
+  programs to create intelligent systems.  
+  - Exist some problem for this thought line, like the 
+  tranformation the informal sentences for formal sentences
+  Then's used in logic sentences.
 
-
-### Acting Humanly 
 ### Acting Rationally
+  - It's the most used approach, and the mainly in textbook.
+  - The idea of agents is the possibily to perceive the 
+  environment, persist over a prolonged time perioed, adapted
+  to change and create and persues goals.
+  - This approach can do the "laws of thought" approach, but
+  it's not the only form. Can made decision using others 
+  strategies when doesn't exist a perfect logic scene.  
+  - In general this approach has two advantages about anothers, 
+  first is moral general than "laws of thought" approach and 
+  second it's more amenable to scientfic development than
+  anothers approach.
+
+
+## The Foundations of Artificial Intelligence
+
+In this topic the textbook provide a brief history of the
+mainly discipline that contributed ideas, viewspoints and techniques AI.
+
+### Philosophy
+  - The philosophy has an important place in AI knowledge
+  this started since the first calculator conception to the
+  mainly calculator created with add, subtract, multiply and 
+  take roots.
+  - In evolution have the observation the animal behavior and
+  how the aritmetical machine produces effects which appear 
+  nearer to thought than all the actons of animals.
+  - Another discution is about difference between matter and mind
+  - So many philosophy discutions can be used in AI for
+  made good AI's.
