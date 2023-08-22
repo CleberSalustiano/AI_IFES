@@ -73,5 +73,11 @@ mainly discipline that contributed ideas, viewspoints and techniques AI.
   how the aritmetical machine produces effects which appear 
   nearer to thought than all the actons of animals.
   - Another discution is about difference between matter and mind
+  - Before thought about physical mind exist the establish the 
+  source of knowledge problem, and before some concepts like empiricism
+  and thought line phylosophy reached the first theory of mind as
+  a computational process.
+  - And in the final the philosophy helped AI in disticton between 
+  - knowledge and action
   - So many philosophy discutions can be used in AI for
   made good AI's.
