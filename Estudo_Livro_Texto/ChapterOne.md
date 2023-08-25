@@ -80,4 +80,17 @@ mainly discipline that contributed ideas, viewspoints and techniques AI.
   - And in the final the philosophy helped AI in disticton between 
   - knowledge and action
   - So many philosophy discutions can be used in AI for
-  made good AI's.
+  made good AIs.
+
+### Mathematics
+  - Along with philosophy, mathematics helped to apply the 
+  philosopy ideas. New mathematics areas were created and helped
+  the AI: logic, computation and probability
+  - The first step was the **logic**, when Boole made the first-order logic
+  that is used today
+  - After the logic the **algorithm** made possible to formalize 
+  general mathematical reasoning as logical deduction.
+  - Therefore Alan Turing helped to show how functions are **computable**, 
+  and after the tractability was the another focus.
+  - And in the final another important area is the **probability**, 
+  then can predict the future actions.
