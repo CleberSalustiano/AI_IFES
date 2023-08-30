@@ -94,3 +94,58 @@ mainly discipline that contributed ideas, viewspoints and techniques AI.
   and after the tractability was the another focus.
   - And in the final another important area is the **probability**, 
   then can predict the future actions.
+
+### Economics
+  - Probability had more studies specific in economy and
+  created anothers knowledge areas.
+  - Decision theory and Game theory are some new ares than 
+  economics made contribuition to AI.
+
+### Neuroscience
+  - Some important question is "How do brains process
+  information. 
+  - The brain study is an import point to create AI
+  with human personality.
+
+### Psychology
+  - Some points like the human behavior and how to create
+  something like that in AI
+  - Another point is the Cognitive psychology and how
+  a brain looks like a information-processing device.
+  - Therefore with this knowledge are these scients made the
+  conclusiont "a cognitive theory should be like a 
+  computer program".
+
+### Computer Engineering
+  - How can we build an efficient computer?
+  - Since WWII to now the computers are going to more 
+  powerful.
+
+### Control theory and cybernetics
+  - How can artifacts operate under their own control?
+
+### Linguistics
+  - How does language relate to thought?
+
+## The history of Artificial Intelligence
+
+### The gestation of artificial intelligence (1943–1955)
+ 
+### The birth of artificial intelligence (1956)
+  
+### Early enthusiasm, great expectations (1952–1969)
+
+### A dose of reality (1966–1973)
+
+### Knowledge-based systems: The key to power? (1969–1979)
+
+### AI becomes an industry (1980–present)
+
+### The return of neural networks (1986–present)
+
+### AI adopts the scientific method (1987–present)
+
+### The emergence of intelligent agents (1995–present)
+
+### The availability of very large data sets (2001–present)
+
