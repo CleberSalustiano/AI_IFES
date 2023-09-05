@@ -130,22 +130,98 @@ mainly discipline that contributed ideas, viewspoints and techniques AI.
 ## The history of Artificial Intelligence
 
 ### The gestation of artificial intelligence (1943–1955)
+  - Begin with the neurons simulate idea, where try to made
+  simulate a brain.
+  - In 1950, two harvard student create the first neural
+  network computer than simulate 40 neurons.
+  - In progress the most important person was Turing, with
+  Turing Test, teorems and the Child Theorem idea, where
+  don't try to create a adult, but try to create a child.
  
 ### The birth of artificial intelligence (1956)
+  - The two-month workshop at Dartmouth in summer of 1956
+  where 10 researchs were together to try create machines
+  use languages, form abstractions and concepts, solve humans
+  reserved problems and in this 2 months they will study 
+  Artificial intelligence.
+  - This workshop didn't lead to any new breakthrought, but
+  it did introduce all the major figures to each other and 
+  created a knowledge area.  
   
 ### Early enthusiasm, great expectations (1952–1969)
+  - The enthusiasm to create AIs was borning, in the start
+  some AI programs were created, in 1956 was showed the first
+  one than start a game and the program quickly learned to 
+  play better game then its creator.
+  - This movement created a strong impression and the research
+  think everything would be possible. Althought in 1958 McCarthy
+  believe it's possible to create a complete AI, where thinks 
+  completely like a human and learn about new knowledge
+  without being reprogrammed.
+
 
 ### A dose of reality (1966–1973)
+  - The AIs created in begin just have a good result when
+  the test was in select data. But in wider selections of problems
+  this systems turned out to fail miserably.
+  - The expectations was do things in 10 years, but this same things
+  just turn reality after 40 years.
+  - The first problem was the no background knowledge about the
+  AI try to understand.
+  - Another problem was the in microworlds the possibilities are
+  limited, so it's possible to try differents combinations of steps
+  until the solution was found. But when this methodology go to 
+  the real world we got a big problem. This problem happens because
+  try multiple steps in real world is just possible for a big computer
+  and another fact is *"The fact that a program can find a solution in 
+  principle does not mean that the program contains any of the mechanisms needed to find it in practice"*
 
 ### Knowledge-based systems: The key to power? (1969–1979)
+  - The new approach called "weak methods" was the new perspective 
+  on AI field, because the researchs understood for solve a hard problem
+  was necessary know about it and solve, maybe, some specific parts.
+  - The DENTRAL program was the first system with this vision and have 
+  successful to solve a specific chemistry problem. It's possible because
+  *"All the relevant theoretical knowledge to solve these problems has been
+   mapped over from its general form in the to efficient special forms."*
+  - After this successful case another solutions have this perception
+  like MYCIN and SHRDLU.
 
 ### AI becomes an industry (1980–present)
+  - The first successful commercial expert system helped enterprise
+  to save millions of dollars and this public have more contact with
+  this field.
 
 ### The return of neural networks (1986–present)
+  - After more people to study this field and the new perceptions
+  were created anothers concepts like **back-propagnation** and 
+  **connectionist** than helped to understand a new form to use the
+  neural networks and solution possibilities.
 
 ### AI adopts the scientific method (1987–present)
+  - Other important point is AI wasn't near to computer science
+  and more and more was more distance. So AI adopts completely the
+  scientific method based on computer science existent concepts.
 
 ### The emergence of intelligent agents (1995–present)
+  - The most difficult point to create intelligent agents is 
+  because the sensors aren't good enought to capture information
+  from the environment.
+  - But intelligent agents are very important for AI because
+  the thought form can expand the horizon. 
 
 ### The availability of very large data sets (2001–present)
+  - During 60 years AIs research just thought about the 
+  algorithm, but don't see the idea to train this algorithm with
+  many data. *But some recent work in AI suggests that for many problems, 
+  it makes more sense to worry about the **data** and be less picky about 
+  what algorithm to apply*
+  - So during study can be to observe a mediocre algorithm with a very 
+  large data set can be more correct than the best known algorithm with
+  a few data set.
 
+## The State of the Art
+  - In State of the Art we have many fields and study being 
+  created like: **Robotic Vehicles**, **Speech recognition**, 
+  **Autonomous planning and scheduling**, **Game playing**,
+  **Spam fighting**, **Logistics planning**, and others.
