@@ -139,9 +139,9 @@ def breadth_first_search(labirinto, inicio, goal, viewer):
 
         expandidos.add(no_atual)
 
-        viewer.update(generated=fronteira,
-                      expanded=expandidos)
-        #viewer.pause()
+        # viewer.update(generated=fronteira,
+        #               expanded=expandidos)
+        # viewer.pause()
 
 
     caminho = obtem_caminho(goal_encontrado)
@@ -187,8 +187,8 @@ def depth_first_search(labirinto, inicio, goal, viewer):
 
         expandidos.add(no_atual)
 
-        viewer.update(generated=fronteira,
-                      expanded=expandidos)
+        # viewer.update(generated=fronteira,
+        #               expanded=expandidos)
         # viewer.pause()
 
 
@@ -254,8 +254,8 @@ def a_star_search(labirinto, inicio, goal, viewer):
                         fronteira.append(v)
         expandidos.add(no_atual)
                     
-        viewer.update(generated=fronteira,
-                      expanded=expandidos)
+        # viewer.update(generated=fronteira,
+        #               expanded=expandidos)
         # viewer.pause()
                     
     caminho = obtem_caminho(goal_encontrado)
@@ -317,8 +317,8 @@ def uniform_cost_search(labirinto, inicio, goal, viewer):
                     else:
                         fronteira.append(v)
                     
-        viewer.update(generated=fronteira,
-                      expanded=expandidos)
+        # viewer.update(generated=fronteira,
+        #               expanded=expandidos)
         # viewer.pause()
                     
     caminho = obtem_caminho(goal_encontrado)
@@ -335,8 +335,8 @@ def main():
     for _ in range(2):
         SEED = 0  # coloque None no lugar do 42 para deixar aleatorio
         random.seed(SEED)
-        N_LINHAS  = 10
-        N_COLUNAS = 20
+        N_LINHAS  = 100
+        N_COLUNAS = 100
         INICIO = Celula(y=0, x=0, anterior=None)
         GOAL   = Celula(y=N_LINHAS-1, x=N_COLUNAS-1, anterior=None)
 
@@ -348,30 +348,8 @@ def main():
         labirinto = gera_labirinto(N_LINHAS, N_COLUNAS, INICIO, GOAL)
 
         viewer = MazeViewer(labirinto, INICIO, GOAL,
-                            step_time_miliseconds=20, zoom=40)
-
-        #----------------------------------------
-        # BFS Search
-        #----------------------------------------
-        viewer._figname = "BFS"
-        caminho, custo_total, expandidos = \
-                breadth_first_search(labirinto, INICIO, GOAL, viewer)
-
-        if len(caminho) == 0:
-            print("Goal é inalcançavel neste labirinto.")
-
-        print(
-            f"BFS:"
-            f"\tCusto total do caminho: {custo_total}.\n"
-            f"\tNumero de passos: {len(caminho)-1}.\n"
-            f"\tNumero total de nos expandidos: {len(expandidos)}.\n\n"
-
-        )
-
-        viewer.update(path=caminho)
-        viewer.pause()
-
-
+                            step_time_miliseconds=20, zoom=10)
+        
         #----------------------------------------
         # DFS Search
         #----------------------------------------
