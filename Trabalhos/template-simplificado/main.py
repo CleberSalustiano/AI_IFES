@@ -1,4 +1,5 @@
-# 
+# Cleber de Jesus Salustiano
+# 20202bsi0268
 
 import time
 import random
@@ -286,7 +287,12 @@ def uniform_cost_search(labirinto, inicio, goal, viewer):
 
 
 def main():
-    for _ in range(1000):
+
+    tempo_execucao_dfs = []
+    tempo_execucao_a_star = []
+    tempo_execucao_ucs = []
+
+    for _ in range(2):
         SEED = 0  # coloque None no lugar do 42 para deixar aleatorio
         random.seed(SEED)
         N_LINHAS  = 100
@@ -323,6 +329,7 @@ def main():
             f"\tNumero total de nos expandidos: {len(expandidos)}.\n"
             f"\tTempo de execucao: {tempo_final-tempo_inicial}.\n\n"
         )
+        tempo_execucao_dfs.append(tempo_final-tempo_inicial)
 
         # viewer.update(path=caminho)
         # viewer.pause()
@@ -347,6 +354,7 @@ def main():
             f"\tNumero total de nos expandidos: {len(expandidos)}.\n"
             f"\tTempo de execucao: {tempo_final-tempo_inicial}.\n\n"
         )
+        tempo_execucao_a_star.append(tempo_final-tempo_inicial)
 
         # viewer.update(path=caminho)
         # viewer.pause()
@@ -371,14 +379,23 @@ def main():
             f"\tNumero total de nos expandidos: {len(expandidos)}.\n"
             f"\tTempo de execucao: {tempo_final-tempo_inicial}.\n\n"
         )
+        tempo_execucao_ucs.append(tempo_final-tempo_inicial)
 
         # viewer.update(path=caminho)
         # viewer.pause()
 
+    # Calcular a média de tempo de execução para cada algoritmo
+    media_tempo_dfs = sum(tempo_execucao_dfs) / len(tempo_execucao_dfs)
+    media_tempo_a_star = sum(tempo_execucao_a_star) / len(tempo_execucao_a_star)
+    media_tempo_ucs = sum(tempo_execucao_ucs) / len(tempo_execucao_ucs)
+
+    # Exibir as médias
+    print("Média de Tempo de Execução - DFS:", media_tempo_dfs)
+    print("Média de Tempo de Execução - A*:", media_tempo_a_star)
+    print("Média de Tempo de Execução - UCS:", media_tempo_ucs)
 
     print("OK! Pressione alguma tecla pra finalizar...")
     input()
-
 
 if __name__ == "__main__":
     main()
