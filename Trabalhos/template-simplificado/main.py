@@ -1,11 +1,11 @@
+# 
+
 import time
 import random
 
 from collections import deque
 from viewer import MazeViewer
 from math import inf, sqrt
-
-
 
 def gera_labirinto(n_linhas, n_colunas, inicio, goal):
     # cria labirinto vazio
@@ -112,13 +112,13 @@ def depth_first_search(labirinto, inicio, goal, viewer):
     fronteira.append(inicio)
 
     # variavel para armazenar o goal quando ele for encontrado.
-    goal_encontrado = None
+    objetivo_encontrado = None
 
     # Repete enquanto nos nao encontramos o goal e ainda
     # existem para serem expandidos na fronteira. Se
     # acabarem os nos da fronteira antes do goal ser encontrado,
     # entao ele nao eh alcancavel.
-    while (len(fronteira) > 0) and (goal_encontrado is None):
+    while (len(fronteira) > 0) and (objetivo_encontrado is None):
 
         # seleciona o no mais novo para ser expandido
         no_atual = fronteira.pop()
@@ -128,14 +128,14 @@ def depth_first_search(labirinto, inicio, goal, viewer):
 
         # para cada vizinho verifica se eh o goal e adiciona na
         # fronteira se ainda nao foi expandido e nao esta na fronteira
-        for v in vizinhos:
-            if v.y == goal.y and v.x == goal.x:
-                goal_encontrado = v
+        for vizinho in vizinhos:
+            if vizinho.y == goal.y and vizinho.x == goal.x:
+                objetivo_encontrado = vizinho
                 # encerra o loop interno
                 break
             else:
-                if (not esta_contido(expandidos, v)) and (not esta_contido(fronteira, v)):
-                    fronteira.append(v)
+                if (not esta_contido(expandidos, vizinho)) and (not esta_contido(fronteira, vizinho)):
+                    fronteira.append(vizinho)
 
         expandidos.add(no_atual)
 
@@ -144,7 +144,7 @@ def depth_first_search(labirinto, inicio, goal, viewer):
         # viewer.pause()
 
 
-    caminho = obtem_caminho(goal_encontrado)
+    caminho = obtem_caminho(objetivo_encontrado)
     custo   = custo_caminho(caminho)
 
     return caminho, custo, expandidos
@@ -155,18 +155,19 @@ def depth_first_search(labirinto, inicio, goal, viewer):
 
 
 def a_star_search(labirinto, inicio, goal, viewer):
-    # nos gerados e que podem ser expandidos (vermelhos)
+    # Nós na fronteira que podem ser expandidos (vermelhos)
     fronteira = deque()
-    # nos ja expandidos (amarelos)
+    # Nós já expandidos (amarelos)
     expandidos = set()
 
-    # adiciona o no inicial na fronteira
+    # Adiciona o nó inicial à fronteira
     fronteira.append(inicio)
 
-    # variavel para armazenar o goal quando ele for encontrado.
-    goal_encontrado = None
+    # Variável para armazenar o objetivo quando for encontrado.
+    objetivo_encontrado = None
     
-    while (len(fronteira) > 0) and (goal_encontrado is None):
+    # Início do loop principal: Encontra o caminho usando o algoritmo A*
+    while (len(fronteira) > 0) and (objetivo_encontrado is None):
     
         # Encontra o no com menor valor de f
         no_atual = fronteira[0]
@@ -174,106 +175,107 @@ def a_star_search(labirinto, inicio, goal, viewer):
             if item.f < no_atual.f:
                 no_atual = item
         
-        # Remove o no atual da fronteira e adiciona aos expandidos
+        # Remove o nó atual da fronteira e adiciona aos expandidos
         fronteira.remove(no_atual)
 
-        # busca os vizinhos do no
+        # Busca os vizinhos do nó
         vizinhos = celulas_vizinhas_livres(no_atual, labirinto)
         
-        # para cada vizinho verifica se eh o goal e adiciona na
-        # fronteira se ainda nao foi expandido e nao esta na fronteira
-        for v in vizinhos:
-            if v.y == goal.y and v.x == goal.x:
-                goal_encontrado = v
-                # encerra o loop interno
+        # Para cada vizinho, verifica se é o objetivo e adiciona à fronteira
+        # se ainda não foi expandido e não está na fronteira
+        for vizinho in vizinhos:
+            if vizinho.y == goal.y and vizinho.x == goal.x:
+                objetivo_encontrado = vizinho
+                # Sai do loop interno
                 break
             else:
-                #caso o vizinho não tenha sido expandido, calcula f = g + h
-                if (not esta_contido(expandidos, v)):
-                    v.g = no_atual.g + 1
-                    v.h = distancia(v, goal)
-                    v.f = v.g + v.h
+                # Se o vizinho não foi expandido, calcula f = g + h
+                if (not esta_contido(expandidos, vizinho)):
+                    vizinho.g = no_atual.g + 1
+                    vizinho.h = distancia(vizinho, goal)
+                    vizinho.f = vizinho.g + vizinho.h
 
-                    # Caso esteja na fronteira e com valor menor de g,
-                    # atualiza-se o valor de g e do anterior na fronteira
-                    if esta_contido(fronteira, v):
+                    # Se estiver na fronteira e tiver um valor menor de g,
+                    # atualiza o valor de g e do nó anterior na fronteira
+                    if esta_contido(fronteira, vizinho):
                         for elemento in fronteira:
-                            if (elemento.y == v.y) and (elemento.x == v.x):
-                                if v.g < elemento.g:
+                            if (elemento.y == vizinho.y) and (elemento.x == vizinho.x):
+                                if vizinho.g < elemento.g:
                                     continue
-                    # Se não está na fronteira, adiciona-se
+                    # Se não estiver na fronteira, adiciona-o
                     else:
-                        fronteira.append(v)
+                        fronteira.append(vizinho)
         expandidos.add(no_atual)
                     
         # viewer.update(generated=fronteira,
         #               expanded=expandidos)
         # viewer.pause()
                     
-    caminho = obtem_caminho(goal_encontrado)
+    caminho = obtem_caminho(objetivo_encontrado)
     custo   = custo_caminho(caminho)
 
     return caminho, custo, expandidos
 
 
 def uniform_cost_search(labirinto, inicio, goal, viewer):
-    # nos gerados e que podem ser expandidos (vermelhos)
+    # Nós gerados e passíveis de expansão (marcados em vermelho)
     fronteira = deque()
-    # nos ja expandidos (amarelos)
+    # Nós já expandidos (marcados em amarelo)
     expandidos = set()
 
     # adiciona o no inicial na fronteira
     fronteira.append(inicio)
 
-    # busca os vizinhos do no
+    # Inicializa uma lista de vizinhos do nó inicial
     vizinhos = celulas_vizinhas_livres(inicio, labirinto)
 
-    # variavel para armazenar o goal quando ele for encontrado.
-    goal_encontrado = None    
+    # Variável para armazenar o objetivo quando encontrado
+    objetivo_encontrado = None    
     
-    while (len(fronteira) > 0) and (goal_encontrado is None):
-    
-        # seleciona o no mais novo para ser expandido
+    while (len(fronteira) > 0) and (objetivo_encontrado is None):
+        # Continua enquanto houver nós na fronteira e o objetivo não foi encontrado
+
+        # Seleciona o nó mais recente para expansão
         no_atual = fronteira[0]
         for item in fronteira:
             if item.f < no_atual.f:
                 no_atual = item
         
-        # Remove o no atual da fronteira e adiciona aos expandidos
+        # Remove o nó atual da fronteira e o adiciona aos expandidos
         fronteira.remove(no_atual)
         expandidos.add(no_atual)
 
-        # busca os vizinhos do no
+        # Busca os vizinhos do nó atual
         vizinhos = celulas_vizinhas_livres(no_atual, labirinto)
         
-        # para cada vizinho verifica se eh o goal e adiciona na
-        # fronteira se ainda nao foi expandido e nao esta na fronteira
-        for v in vizinhos:
-            if v.y == goal.y and v.x == goal.x:
-                goal_encontrado = v
-                # encerra o loop interno
+        # Para cada vizinho, verifica se é o objetivo e o adiciona à
+        # fronteira se ainda não foi expandido e não está na fronteira
+        for vizinho in vizinhos:
+            if vizinho.y == goal.y and vizinho.x == goal.x:
+                objetivo_encontrado = vizinho
+                # Encerra o loop interno, pois o objetivo foi encontrado
                 break
             else:
-                #caso o vizinho não tenha sido expandido, calcula f = g + h
-                if (not esta_contido(expandidos, v)):
-                    v.g = no_atual.g + 1
+                # Caso o vizinho não tenha sido expandido, calcula f = g + h
+                if (not esta_contido(expandidos, vizinho)):
+                    vizinho.g = no_atual.g + 1
 
-                    # Caso esteja na fronteira e com valor maior de g,
-                    # volta ao início do loop (não adiciona na fronteira)
-                    if esta_contido(fronteira, v):
+                    # Se o vizinho já está na fronteira e com valor de g maior,
+                    # atualiza o valor de g e o nó anterior na fronteira
+                    if esta_contido(fronteira, vizinho):
                         for elemento in fronteira:
-                            if (elemento.y == v.y) and (elemento.x == v.x):
-                                if v.g < elemento.g:
-                                    elemento.g = v.g
-                                    elemento.anterior = v.anterior
+                            if (elemento.y == vizinho.y) and (elemento.x == vizinho.x):
+                                if vizinho.g < elemento.g:
+                                    elemento.g = vizinho.g
+                                    elemento.anterior = vizinho.anterior
                     else:
-                        fronteira.append(v)
-                    
+                        fronteira.append(vizinho)
+               
         # viewer.update(generated=fronteira,
         #               expanded=expandidos)
         # viewer.pause()
                     
-    caminho = obtem_caminho(goal_encontrado)
+    caminho = obtem_caminho(objetivo_encontrado)
     custo   = custo_caminho(caminho)
 
     return caminho, custo, expandidos
@@ -284,7 +286,7 @@ def uniform_cost_search(labirinto, inicio, goal, viewer):
 
 
 def main():
-    for _ in range(20):
+    for _ in range(1000):
         SEED = 0  # coloque None no lugar do 42 para deixar aleatorio
         random.seed(SEED)
         N_LINHAS  = 100
@@ -306,10 +308,10 @@ def main():
         # DFS Search
         #----------------------------------------
         viewer._figname = "DFS"
-        inicio = time.time()
+        tempo_inicial = time.time()
         caminho, custo_total, expandidos = \
                 depth_first_search(labirinto, INICIO, GOAL, viewer)
-        fim = time.time()
+        tempo_final = time.time()
 
         if len(caminho) == 0:
             print("Goal is unreachable for this maze.")
@@ -318,22 +320,22 @@ def main():
             f"DFS:"
             f"\tCusto total do caminho: {custo_total}.\n"
             f"\tNumero de passos: {len(caminho)-1}.\n"
-            f"\tNumero total de nos expandidos: {len(expandidos)}.\n\n"
-            f"\tTempo de execucao: {fim-inicio}.\n\n"
-
+            f"\tNumero total de nos expandidos: {len(expandidos)}.\n"
+            f"\tTempo de execucao: {tempo_final-tempo_inicial}.\n\n"
         )
 
         # viewer.update(path=caminho)
         # viewer.pause()
+        
         #----------------------------------------
         # A-Star Search
         #----------------------------------------
         
         viewer._figname = "A-Star"
-        inicio = time.time()
+        tempo_inicial = time.time()
         caminho, custo_total, expandidos = \
                 a_star_search(labirinto, INICIO, GOAL, viewer)
-        fim = time.time()
+        tempo_final = time.time()
 
         if len(caminho) == 0:
             print("Goal is unreachable for this maze.")
@@ -342,9 +344,8 @@ def main():
             f"A-Star:"
             f"\tCusto total do caminho: {custo_total}.\n"
             f"\tNumero de passos: {len(caminho)-1}.\n"
-            f"\tNumero total de nos expandidos: {len(expandidos)}.\n\n"
-            f"\tTempo de execucao: {fim-inicio}.\n\n"
-
+            f"\tNumero total de nos expandidos: {len(expandidos)}.\n"
+            f"\tTempo de execucao: {tempo_final-tempo_inicial}.\n\n"
         )
 
         # viewer.update(path=caminho)
@@ -355,10 +356,10 @@ def main():
         #----------------------------------------
 
         viewer._figname = "Uniform Cost Search"
-        inicio = time.time()
+        tempo_inicial = time.time()
         caminho, custo_total, expandidos = \
                 uniform_cost_search(labirinto, INICIO, GOAL, viewer)
-        fim = time.time()
+        tempo_final = time.time()
 
         if len(caminho) == 0:
             print("Goal is unreachable for this maze.")
@@ -367,14 +368,12 @@ def main():
             f"Uniform Cost Search:"
             f"\tCusto total do caminho: {custo_total}.\n"
             f"\tNumero de passos: {len(caminho)-1}.\n"
-            f"\tNumero total de nos expandidos: {len(expandidos)}.\n\n"
-            f"\tTempo de execucao: {fim-inicio}.\n\n"
-
+            f"\tNumero total de nos expandidos: {len(expandidos)}.\n"
+            f"\tTempo de execucao: {tempo_final-tempo_inicial}.\n\n"
         )
 
         # viewer.update(path=caminho)
         # viewer.pause()
-
 
 
     print("OK! Pressione alguma tecla pra finalizar...")
